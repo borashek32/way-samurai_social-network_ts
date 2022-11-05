@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const Technologies = () => {
+function Technologies() {
     return (
         <div>
             <ul>

@@ -1,11 +1,13 @@
 import React from "react";
+import HeaderLink from "./headerLink/HeaderLink"
 
-const Header = () => {
+function Header() {
     return (
         <div>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Articles</a>
+            <h1>Social Network</h1>
+            <HeaderLink title={"Home"} />
+            <HeaderLink title={"About"}/>
+            <HeaderLink title={"Articles"}/>
         </div>
     )
 }

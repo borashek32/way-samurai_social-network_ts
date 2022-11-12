@@ -1,15 +1,22 @@
-import React, { Component } from "react";
-import Header from "./components/header/Header"
-import Technologies from "./components/technologies/Technologies"
 import './App.sass';
+import Header from "./components/header/Header"
+import {Navbar} from "./components/navbar/Navbar";
+import {Content} from "./components/content/Content";
+import {Footer} from "./components/footer/Footer";
 
 function App() {
-  return (
-      <div className="App">
-          <Header />
-          <Technologies />
-      </div>
-  );
+    return (
+        <div className="container">
+            <div className="wrapper">
+                <Header />
+                <main className="main">
+                    <Navbar />
+                    <Content />
+                </main>
+                <Footer />
+            </div>
+        </div>
+    );
 }
 
 export default App;

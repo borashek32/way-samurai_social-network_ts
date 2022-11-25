@@ -1,10 +1,8 @@
 import classes from './Posts.module.sass'
-// import {Post, PostType} from "./post/Post"
 import {AddPost} from "./addPost/AddPost"
-import {ButtonDefault} from "../../utils/buttons/ButtonDefault";
-import {useState} from "react";
-import Author from "./post/Author/Author";
-import {ButtonDefaultForPost} from "../../utils/buttons/ButtonDefaultForPost";
+import {ButtonDefault} from "../../../utils/buttons/ButtonDefault";
+import React, {useState} from "react";
+import {Post} from "./post/Post";
 
 export type PostsType = {
     title: string
@@ -21,7 +19,7 @@ export type PostType = {
 
 export type FilterType = "All Posts" | "Published Posts" | "Unpublished Posts"
 
-export const Posts = (props: PostsType) => {
+export const Posts: React.FC<PostsType> = (props) => {
     // filter posts
     const [filter, setFilter] = useState<FilterType>("All Posts");
 
@@ -30,7 +28,6 @@ export const Posts = (props: PostsType) => {
     }
 
     let currentPosts = props.posts;
-
     if (filter === "Published Posts") {
         currentPosts = currentPosts.filter((filteredPost) => filteredPost.isPublished);
     }
@@ -69,30 +66,16 @@ export const Posts = (props: PostsType) => {
                 <ButtonDefault callback={() => filterClickHandler('Unpublished Posts')} name={"Unpublished Posts"} />
                 <ButtonDefault callback={() => {}} name={"New Posts"} />
             </div>
-            {currentPosts.map(post => {
+            {currentPosts.map((post, index) => {
                 return (
-                    <div className={classes.post} key={post.id}>
-                        <Author />
-                        <div className={classes.post__content}>
-                            {/*<h4 className={classes.post__header}>{props.title}</h4>*/}
-                            <p className={classes.post__desc}>{post.desc}...</p>
-                            <div className={classes.post__buttons}>
-                                Likes: {post.likes}
-                                <ButtonDefaultForPost callback={publishPost} name={"Publish"} />
-                                <ButtonDefaultForPost callback={unpublishPost} name={"Unpublish"} />
-                                <ButtonDefaultForPost callback={editPost} name={"Edit"} />
-                                <ButtonDefaultForPost callback={() => deletePostHandler(post.id)} name={"Delete"} />
-                            </div>
-                        </div>
-                    </div>
-                    // <Post
-                    // key={index}
-                    // id={post.id}
-                    // // title={post.title}
-                    // likes={post.likes}
-                    // desc={post.desc}
-                    // isPublished={post.isPublished}
-                    // />
+                    <Post
+                        key={index}
+                        id={post.id}
+                        // title={post.title}
+                        likes={post.likes}
+                        desc={post.desc}
+                        isPublished={post.isPublished}
+                    />
                 )
             })}
         </div>

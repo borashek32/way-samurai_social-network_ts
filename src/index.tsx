@@ -29,6 +29,6 @@ const messages = [
 ]
 
 ReactDOM.render(
-    <App posts={posts} dialogs={dialogs} messages={messages} />,
+    <App />,
   document.getElementById('root')
 );

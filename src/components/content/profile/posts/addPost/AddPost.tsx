@@ -1,7 +1,7 @@
 import classesAdd from './AddPost.module.sass'
 import classes from '../post/Post.module.sass'
-import {ButtonDefault} from "../../../utils/buttons/ButtonDefault"
-import {Textarea} from "../../../utils/textarea/Textarea";
+import {ButtonDefault} from "../../../../utils/buttons/ButtonDefault"
+import {Textarea} from "../../../../utils/textarea/Textarea";
 
 type AddPostType = {
 

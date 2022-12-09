@@ -1,8 +1,8 @@
 import classes from "./Profile.module.sass";
 import {Posts} from "./posts/Posts";
-import state from "../../../redux/state";
+import state, {ProfilePageType} from "../../../redux/state";
 
-export const Profile = () => {
+export const Profile = (props: ProfilePageType) => {
   return (
     <div>
       <div className={classes.profile}>
@@ -21,7 +21,10 @@ export const Profile = () => {
           <p className={classes.profile__item}>Facebook: </p>
         </div>
       </div>
-      <Posts title="My Posts" posts={state.profilePage.posts}/>
+      <Posts
+        title="My Posts"
+        posts={state.profilePage.posts}
+      />
     </div>
   )
 }

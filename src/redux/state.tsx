@@ -1,68 +1,99 @@
-type MessageType = {
-    id: number
+import { v1 } from "uuid"
+import {useState} from "react";
+
+export type MessageType = {
+    id: string
     text: string
 }
-type DialogType = {
-    id: number
+export type DialogType = {
+    id: string
     userName: string
     text: string
 }
-type PostType = {
-    id: number
+export type PostType = {
+    id: string
     isPublished: boolean
-    title: string
     likes: number
     desc: string
 }
-type ProfilePageType = {
+export type ProfilePageType = {
     title: string
     posts: Array<PostType>
 }
-type DialogPageType = {
+export type DialogPageType = {
     dialogsTitle: string
     dialogs: Array<DialogType>
     messagesTitle: string
     messages: Array<MessageType>
 }
-type SidebarType = {}
+export type SidebarType = {}
 
-type RootStateType = {
+export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
     sidebar: SidebarType
 }
+export type FilterType = "All Posts" | "Published Posts" | "Unpublished Posts"
 
 let state: RootStateType = {
     profilePage: {
         title: "My posts",
         posts: [
-            {id: 1, isPublished: false, title: "React", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
-            {id: 2, isPublished: false, title: "JS", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
-            {id: 3, isPublished: true, title: "PHP", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
-            {id: 4, isPublished: false, title: "Ruby", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
-            {id: 5, isPublished: false, title: "ReactJS", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
-            {id: 6, isPublished: true, title: "VueJS", likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"}
+            {id: v1(), isPublished: false, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
+            {id: v1(), isPublished: false, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
+            {id: v1(), isPublished: true, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
+            {id: v1(), isPublished: false, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
+            {id: v1(), isPublished: false, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"},
+            {id: v1(), isPublished: true, likes: 10, desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid maiores modi molestias optio quod suscipit? Facilis mollitia ut veritatis!"}
         ],
     },
     dialogsPage: {
         dialogsTitle: "Dialogs",
         dialogs: [
-            {id: 1, userName: "Polina", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
-            {id: 2, userName: "Vadim", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
-            {id: 3, userName: "Igor", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
-            {id: 4, userName: "Olga", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
-            {id: 5, userName: "Petr", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
+            {id: v1(), userName: "Polina", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
+            {id: v1(), userName: "Vadim", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
+            {id: v1(), userName: "Igor", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
+            {id: v1(), userName: "Olga", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."},
+            {id: v1(), userName: "Petr", text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
         ],
         messagesTitle: "Messages from ",
         messages: [
-            {id: 1, text: "Lorem ipsum dolor"},
-            {id: 2, text: "Lorem ipsum dolor"},
-            {id: 3, text: "Lorem ipsum dolor"},
-            {id: 4, text: "Lorem ipsum dolor"},
-            {id: 5, text: "Lorem ipsum dolor"}
+            {id: v1(), text: "Lorem ipsum dolor"},
+            {id: v1(), text: "Lorem ipsum dolor"},
+            {id: v1(), text: "Lorem ipsum dolor"},
+            {id: v1(), text: "Lorem ipsum dolor"},
+            {id: v1(), text: "Lorem ipsum dolor"}
         ]
     },
     sidebar: {}
 }
+
+// const [posts, setPosts] = useState<Array<PostType>>(state.profilePage.posts)
+// const [filter, setFilter] = useState<FilterType>("All Posts");
+
+// // filter posts
+// export const filterClickHandler = (buttonName: FilterType) => {
+//     setFilter(buttonName);
+// }
+// export let currentPosts = posts;
+// if (filter === "Published Posts") {
+//     currentPosts = currentPosts.filter((filteredPost) => filteredPost.isPublished);
+// }
+// if (filter === "Unpublished Posts") {
+//     currentPosts = currentPosts.filter((filteredPost) => !filteredPost.isPublished);
+// }
+// // add post
+// export const addPost = (desc: string) => {
+//     let newPublication = {id: v1(), isPublished: false, likes: 0, desc: desc}
+//     setPosts([newPublication, ...posts])
+// }
+// // delete post
+// export const deletePostHandler = (id: string) => {
+//     setPosts(currentPosts.filter(p => p.id !== id))
+// }
+// // publish post
+// export const changeIsPublishedHandler = (id: string, newValue: boolean) => {
+//     setPosts(posts.map(p => p.id === id ? {...p, isPublished: newValue} : p))
+// }
 
 export default state
